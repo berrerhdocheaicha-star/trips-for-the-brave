@@ -1,0 +1,2180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trips for the Brave | Planeta Apalache</title>
+
+    <meta
+        name="description"
+        content="Descubre Planeta Apalache con Trips for the Brave. Montañas, bosques misteriosos, criaturas fantásticas y la legendaria noche de Llha'merai."
+    >
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --black: #060807;
+            --dark: #0b1110;
+            --green: #12231c;
+            --green-light: #1d4030;
+            --orange: #ff6a21;
+            --orange-light: #ff9a4d;
+            --red: #9e1919;
+            --red-light: #d93232;
+            --cream: #f2e9d8;
+            --grey: #b7bdb8;
+            --glass: rgba(10, 18, 15, 0.78);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--black);
+            color: var(--cream);
+            font-family: "Inter", sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        /* =========================
+           SCROLLBAR
+        ========================= */
+
+        ::-webkit-scrollbar {
+            width: 9px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050706;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--orange);
+            border-radius: 10px;
+        }
+
+        /* =========================
+           NAVEGACIÓN
+        ========================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 20px 6%;
+
+            background: rgba(4, 7, 6, 0.75);
+            backdrop-filter: blur(14px);
+
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .logo {
+            font-family: "Cinzel", serif;
+            font-weight: 800;
+            letter-spacing: 2px;
+            font-size: 1.05rem;
+        }
+
+        .logo span {
+            color: var(--orange);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #d8ddd8;
+            font-size: 0.88rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.7rem;
+            cursor: pointer;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            overflow: hidden;
+
+            background:
+                radial-gradient(circle at 50% 40%, rgba(255, 76, 17, 0.18), transparent 28%),
+                linear-gradient(
+                    to bottom,
+                    rgba(0,0,0,0.15),
+                    rgba(3,6,5,0.85)
+                ),
+                radial-gradient(
+                    ellipse at bottom,
+                    #1d3428 0%,
+                    #09100d 45%,
+                    #030504 100%
+                );
+        }
+
+        /* Montañas */
+
+        .mountains {
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 48%;
+            opacity: 0.9;
+        }
+
+        .mountain {
+            position: absolute;
+            bottom: 0;
+
+            width: 0;
+            height: 0;
+
+            border-left: 220px solid transparent;
+            border-right: 220px solid transparent;
+            border-bottom: 330px solid #0b1712;
+        }
+
+        .mountain:nth-child(1) {
+            left: -80px;
+            transform: scale(1.2);
+        }
+
+        .mountain:nth-child(2) {
+            left: 18%;
+            transform: scale(1.5);
+            border-bottom-color: #10231a;
+        }
+
+        .mountain:nth-child(3) {
+            right: 5%;
+            transform: scale(1.7);
+            border-bottom-color: #08110d;
+        }
+
+        .mountain:nth-child(4) {
+            right: 30%;
+            transform: scale(1.15);
+            border-bottom-color: #14261d;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
+            max-width: 950px;
+            padding: 120px 25px 80px;
+        }
+
+        .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 0.8rem;
+            color: var(--orange);
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-family: "Cinzel", serif;
+            font-size: clamp(3.5rem, 10vw, 8.5rem);
+            line-height: 0.95;
+            letter-spacing: 4px;
+
+            text-shadow:
+                0 0 25px rgba(255, 91, 26, 0.15),
+                0 10px 40px #000;
+        }
+
+        .hero h1 span {
+            color: var(--orange);
+        }
+
+        .hero-subtitle {
+            max-width: 650px;
+            margin: 30px auto;
+
+            color: #cbd1cc;
+            font-size: 1.1rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 25px;
+            border-radius: 4px;
+
+            font-weight: 700;
+            font-size: 0.9rem;
+
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--orange);
+            color: #130a05;
+        }
+
+        .btn-primary:hover {
+            background: var(--orange-light);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255,106,33,0.25);
+        }
+
+        .btn-secondary {
+            border: 1px solid rgba(255,255,255,0.25);
+            background: rgba(255,255,255,0.03);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+
+        .scroll {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            color: #7c837d;
+        }
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        section {
+            padding: 110px 7%;
+            position: relative;
+        }
+
+        .section-header {
+            max-width: 760px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-family: "Cinzel", serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            color: var(--grey);
+        }
+
+        .orange {
+            color: var(--orange);
+        }
+
+        /* =========================
+           INTRO
+        ========================= */
+
+        .intro {
+            background:
+                radial-gradient(circle at 20% 30%, rgba(26, 75, 48, 0.25), transparent 35%),
+                var(--dark);
+        }
+
+        .intro-grid {
+            max-width: 1150px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .intro-text h3 {
+            font-family: "Cinzel", serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .intro-text p {
+            color: #bfc7c0;
+            margin-bottom: 18px;
+        }
+
+        .planet-card {
+            min-height: 400px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+
+            background:
+                radial-gradient(circle at 60% 40%, rgba(255,92,25,0.28), transparent 20%),
+                radial-gradient(circle at 30% 70%, #173c2a, transparent 35%),
+                #09100d;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+            overflow: hidden;
+
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+        }
+
+        .planet {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+
+            background:
+                radial-gradient(circle at 35% 30%, #426c49, #193324 50%, #070c09 80%);
+
+            box-shadow:
+                -25px -15px 50px rgba(84, 147, 88, 0.2),
+                20px 25px 60px rgba(0,0,0,0.9);
+
+            position: relative;
+        }
+
+        .planet::before,
+        .planet::after {
+            content: "";
+            position: absolute;
+            background: rgba(5,10,7,0.5);
+            border-radius: 50%;
+        }
+
+        .planet::before {
+            width: 80px;
+            height: 25px;
+            top: 70px;
+            left: 30px;
+            transform: rotate(-25deg);
+        }
+
+        .planet::after {
+            width: 65px;
+            height: 30px;
+            bottom: 45px;
+            right: 25px;
+            transform: rotate(20deg);
+        }
+
+        .planet-label {
+            position: absolute;
+            bottom: 20px;
+            left: 25px;
+
+            color: #aeb8b0;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+        }
+
+        /* =========================
+           CÓMO LLEGAR
+        ========================= */
+
+        .journey {
+            background: #070b09;
+        }
+
+        .route {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .route-step {
+            padding: 30px 20px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.025);
+
+            text-align: center;
+            border-radius: 6px;
+
+            transition: 0.3s;
+        }
+
+        .route-step:hover {
+            transform: translateY(-7px);
+            border-color: rgba(255,106,33,0.5);
+        }
+
+        .route-icon {
+            font-size: 2.7rem;
+            margin-bottom: 18px;
+        }
+
+        .route-step h3 {
+            font-family: "Cinzel", serif;
+            margin-bottom: 10px;
+        }
+
+        .route-step p {
+            color: #919a94;
+            font-size: 0.88rem;
+        }
+
+        /* =========================
+           ACTIVIDADES
+        ========================= */
+
+        .activities {
+            background: #0b1410;
+        }
+
+        .cards {
+            max-width: 1150px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .activity-card {
+            min-height: 280px;
+            padding: 35px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            border-radius: 7px;
+            border: 1px solid rgba(255,255,255,0.08);
+
+            background:
+                linear-gradient(to top, #060807, transparent),
+                radial-gradient(circle at 70% 30%, rgba(255,106,33,0.25), transparent 35%),
+                #14241c;
+
+            transition: 0.4s;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--orange);
+        }
+
+        .activity-icon {
+            font-size: 2.7rem;
+            margin-bottom: auto;
+        }
+
+        .activity-card h3 {
+            font-family: "Cinzel", serif;
+            font-size: 1.7rem;
+            margin-bottom: 8px;
+        }
+
+        .activity-card p {
+            color: #adb5af;
+        }
+
+        /* =========================
+           ZOO
+        ========================= */
+
+        .zoo {
+            background:
+                radial-gradient(circle at 50% 0%, rgba(113, 26, 20, 0.15), transparent 40%),
+                #080b09;
+        }
+
+        .creatures {
+            max-width: 1200px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .creature {
+            min-height: 440px;
+            padding: 25px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            position: relative;
+            overflow: hidden;
+
+            border-radius: 7px;
+            background: linear-gradient(
+                160deg,
+                #1a2a20,
+                #080c0a
+            );
+
+            border: 1px solid rgba(255,255,255,0.07);
+
+            transition: 0.4s;
+        }
+
+        .creature:hover {
+            transform: translateY(-8px);
+        }
+
+        .creature::before {
+            content: "";
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            top: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(circle, rgba(255,106,33,0.25), transparent 65%);
+        }
+
+        .creature-number {
+            position: absolute;
+            top: 18px;
+            right: 20px;
+
+            color: #6f7972;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+        }
+
+        .creature-symbol {
+            position: absolute;
+            top: 55px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            font-size: 5.5rem;
+            filter: grayscale(1);
+            opacity: 0.85;
+        }
+
+        .creature h3 {
+            position: relative;
+            font-family: "Cinzel", serif;
+            font-size: 1.35rem;
+            margin-bottom: 10px;
+        }
+
+        .creature p {
+            position: relative;
+            color: #aeb7b0;
+            font-size: 0.85rem;
+        }
+
+        .danger {
+            margin-top: 18px;
+            color: var(--orange);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* =========================
+           LLHA'MERAI
+        ========================= */
+
+        .festival {
+            min-height: 800px;
+
+            background:
+                linear-gradient(
+                    rgba(4, 3, 4, 0.72),
+                    rgba(4, 3, 4, 0.92)
+                ),
+                radial-gradient(
+                    circle at 50% 35%,
+                    rgba(180, 18, 18, 0.3),
+                    transparent 35%
+                ),
+                #130707;
+
+            overflow: hidden;
+        }
+
+        .festival::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+
+            left: 50%;
+            top: 50%;
+
+            transform: translate(-50%, -50%);
+
+            border-radius: 50%;
+
+            background: radial-gradient(
+                circle,
+                rgba(170,20,20,0.22),
+                transparent 65%
+            );
+
+            filter: blur(10px);
+        }
+
+        .festival-content {
+            max-width: 850px;
+            margin: auto;
+
+            position: relative;
+            z-index: 2;
+
+            text-align: center;
+        }
+
+        .festival h2 {
+            font-family: "Cinzel", serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1;
+
+            color: #f1dfc8;
+
+            text-shadow: 0 0 35px rgba(255, 55, 55, 0.2);
+        }
+
+        .festival h2 span {
+            color: #d82c2c;
+        }
+
+        .festival-intro {
+            color: #bdb4ac;
+            margin: 30px auto 50px;
+            max-width: 700px;
+        }
+
+        .festival-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+
+            text-align: left;
+        }
+
+        .festival-item {
+            padding: 22px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.035);
+            border-radius: 5px;
+        }
+
+        .festival-item strong {
+            display: block;
+            color: #e8d8c4;
+            margin-bottom: 6px;
+        }
+
+        .festival-item span {
+            color: #99918a;
+            font-size: 0.82rem;
+        }
+
+        /* =========================
+           GASTRONOMÍA
+        ========================= */
+
+        .food {
+            background: #0b110e;
+        }
+
+        .restaurants {
+            max-width: 1150px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .restaurant {
+            padding: 30px 25px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: #0f1813;
+            border-radius: 5px;
+
+            transition: 0.3s;
+        }
+
+        .restaurant:hover {
+            border-color: rgba(255,106,33,0.6);
+        }
+
+        .restaurant-icon {
+            font-size: 2.3rem;
+            margin-bottom: 20px;
+        }
+
+        .restaurant h3 {
+            font-family: "Cinzel", serif;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .restaurant p {
+            color: #a0aaa3;
+            font-size: 0.85rem;
+        }
+
+        .dish {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.07);
+            color: var(--orange);
+            font-size: 0.8rem;
+        }
+
+        /* =========================
+           MERCADO
+        ========================= */
+
+        .market {
+            background:
+                radial-gradient(circle at 80% 50%, rgba(36, 92, 61, 0.2), transparent 35%),
+                #07100c;
+        }
+
+        .market-content {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .market-text h2 {
+            font-family: "Cinzel", serif;
+            font-size: 3rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .market-text p {
+            color: #aeb7b0;
+        }
+
+        .market-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .market-item {
+            padding: 20px;
+
+            background: rgba(255,255,255,0.035);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 4px;
+        }
+
+        .market-item strong {
+            display: block;
+            color: #dfe5df;
+            margin-bottom: 5px;
+        }
+
+        .market-item span {
+            color: #8e9891;
+            font-size: 0.8rem;
+        }
+
+        /* =========================
+           RESERVA
+        ========================= */
+
+        .booking {
+            background:
+                linear-gradient(135deg, #171008, #0b0d0b);
+        }
+
+        .booking-box {
+            max-width: 850px;
+            margin: auto;
+
+            padding: 50px;
+
+            background: rgba(255,255,255,0.035);
+            border: 1px solid rgba(255,255,255,0.1);
+
+            border-radius: 8px;
+        }
+
+        .booking-box h2 {
+            font-family: "Cinzel", serif;
+            text-align: center;
+            font-size: 2.6rem;
+            margin-bottom: 10px;
+        }
+
+        .booking-box > p {
+            text-align: center;
+            color: #949c96;
+            margin-bottom: 35px;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .field.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            color: #bfc6c0;
+            font-size: 0.8rem;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+
+            padding: 14px;
+
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 4px;
+
+            background: #080c0a;
+            color: #eee;
+
+            outline: none;
+            font-family: inherit;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--orange);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        form button {
+            grid-column: 1 / -1;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 55px 7% 30px;
+            background: #040605;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .footer-content {
+            max-width: 1150px;
+            margin: auto;
+
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .footer-brand {
+            max-width: 400px;
+        }
+
+        .footer-brand h3 {
+            font-family: "Cinzel", serif;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand p {
+            color: #7e8781;
+            font-size: 0.85rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            color: #888f8a;
+            font-size: 0.8rem;
+            align-items: center;
+        }
+
+        .copyright {
+            max-width: 1150px;
+            margin: 40px auto 0;
+
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+
+            color: #555c57;
+            font-size: 0.75rem;
+        }
+
+        /* =========================
+           ANIMACIONES
+        ========================= */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .blood-drop {
+            position: absolute;
+
+            width: 5px;
+            height: 12px;
+
+            background: #a91616;
+            border-radius: 50% 50% 55% 55%;
+
+            opacity: 0.7;
+
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.7;
+            }
+
+            to {
+                transform: translateY(900px);
+                opacity: 0;
+            }
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                right: 5%;
+
+                width: 220px;
+
+                display: none;
+                flex-direction: column;
+                gap: 0;
+
+                background: rgba(5,8,7,0.96);
+                border: 1px solid rgba(255,255,255,0.08);
+                border-radius: 5px;
+
+                overflow: hidden;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 14px 20px;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .intro-grid,
+            .market-content {
+                grid-template-columns: 1fr;
+            }
+
+            .route {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .creatures {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .restaurants {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .festival-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            section {
+                padding: 80px 5%;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .route,
+            .cards,
+            .creatures,
+            .restaurants,
+            .festival-grid,
+            .market-list {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-box {
+                padding: 30px 20px;
+            }
+
+            form {
+                grid-template-columns: 1fr;
+            }
+
+            .field.full,
+            form button {
+                grid-column: auto;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+            }
+
+            .planet-card {
+                min-height: 300px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVEGACIÓN
+    ========================== -->
+
+    <nav>
+        <a href="#inicio" class="logo">
+            TRIPS <span>FOR</span> THE BRAVE
+        </a>
+
+        <button class="menu-btn" aria-label="Abrir menú">
+            ☰
+        </button>
+
+        <ul class="nav-links">
+            <li><a href="#planeta">Apalache</a></li>
+            <li><a href="#viaje">Cómo llegar</a></li>
+            <li><a href="#experiencias">Experiencias</a></li>
+            <li><a href="#zoo">Criaturas</a></li>
+            <li><a href="#llhamerai">Llha'merai</a></li>
+            <li><a href="#gastronomia">Gastronomía</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <header class="hero" id="inicio">
+
+        <div class="mountains">
+            <div class="mountain"></div>
+            <div class="mountain"></div>
+            <div class="mountain"></div>
+            <div class="mountain"></div>
+        </div>
+
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                Trips for the Brave presenta
+            </div>
+
+            <h1>
+                PLANETA<br>
+                <span>APALACHE</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                Un mundo de montañas gigantes, bosques misteriosos,
+                criaturas imposibles y secretos que solo se revelan
+                cuando cae la noche.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#planeta" class="btn btn-primary">
+                    Explorar Apalache
+                </a>
+
+                <a href="#viaje" class="btn btn-secondary">
+                    Descubrir el viaje
+                </a>
+            </div>
+
+        </div>
+
+        <div class="scroll">
+            DESPLÁZATE PARA DESCUBRIR
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         INTRO
+    ========================== -->
+
+    <section class="intro" id="planeta">
+
+        <div class="section-header reveal">
+            <div class="eyebrow">
+                Bienvenido
+            </div>
+
+            <h2>
+                Un planeta fuera de lo común
+            </h2>
+
+            <p>
+                Hay lugares que se visitan. Y luego está Apalache.
+            </p>
+        </div>
+
+        <div class="intro-grid">
+
+            <div class="intro-text reveal">
+
+                <h3>
+                    Más allá de las estrellas
+                </h3>
+
+                <p>
+                    Bienvenido al Planeta Apalache, un planeta lleno de
+                    montañas enormes y bosques bastante misteriosos.
+                </p>
+
+                <p>
+                    Aquí podrás conocer su gran ciudad, explorar sus zonas
+                    de ocio bajo tierra, descansar en sus curiosas posadas
+                    y descubrir todos los secretos que se esconden por el
+                    planeta.
+                </p>
+
+                <p>
+                    Pero recuerda una cosa antes de comenzar tu aventura:
+                    <strong>nunca salgas al exterior durante la noche.</strong>
+                </p>
+
+            </div>
+
+            <div class="planet-card reveal">
+
+                <div class="planet"></div>
+
+                <div class="planet-label">
+                    SISTEMA APALACHE · SECTOR 07
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         LEYENDA
+    ========================== -->
+
+    <section class="festival">
+
+        <div id="bloodDrops"></div>
+
+        <div class="festival-content">
+
+            <div class="eyebrow">
+                La leyenda de Apalache
+            </div>
+
+            <h2>
+                La estatua<br>
+                de las <span>lágrimas</span>
+            </h2>
+
+            <p class="festival-intro">
+
+                Cuenta la leyenda que la enorme estatua que se encuentra
+                frente a la ciudad era en realidad una persona completamente
+                normal.
+
+                Una noche decidió desafiar la norma y salir al exterior.
+                Los espíritus la persiguieron hasta que uno consiguió
+                poseerla. Su cuerpo comenzó entonces a convertirse en piedra
+                hasta quedar completamente petrificado.
+
+                Desde entonces, la estatua permanece frente a la ciudad,
+                llorando sangre.
+
+            </p>
+
+            <a href="#llhamerai" class="btn btn-primary">
+                Descubrir Llha'merai
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         VIAJE
+    ========================== -->
+
+    <section class="journey" id="viaje">
+
+        <div class="section-header reveal">
+
+            <div class="eyebrow">
+                La ruta
+            </div>
+
+            <h2>
+                ¿Cómo llegar a Apalache?
+            </h2>
+
+            <p>
+                Cuatro etapas separan la Tierra de uno de los destinos
+                más extraordinarios de la galaxia.
+            </p>
+
+        </div>
+
+        <div class="route">
+
+            <div class="route-step reveal">
+                <div class="route-icon">🌍</div>
+                <h3>La Tierra</h3>
+                <p>
+                    Embarca en una nave espacial de pasajeros
+                    rumbo a la estación orbital.
+                </p>
+            </div>
+
+            <div class="route-step reveal">
+                <div class="route-icon">🛰️</div>
+                <h3>Estación orbital</h3>
+                <p>
+                    Descansa y cambia de nave para continuar
+                    la expedición.
+                </p>
+            </div>
+
+            <div class="route-step reveal">
+                <div class="route-icon">🌀</div>
+                <h3>Portal interestelar</h3>
+                <p>
+                    Atraviesa un portal capaz de recorrer
+                    distancias gigantescas en minutos.
+                </p>
+            </div>
+
+            <div class="route-step reveal">
+                <div class="route-icon">🪐</div>
+                <h3>Apalache</h3>
+                <p>
+                    Desciende entre montañas y bosques hasta
+                    la gran ciudad del planeta.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         EXPERIENCIAS
+    ========================== -->
+
+    <section class="activities" id="experiencias">
+
+        <div class="section-header reveal">
+
+            <div class="eyebrow">
+                Vive Apalache
+            </div>
+
+            <h2>
+                ¿Qué ver y qué hacer?
+            </h2>
+
+            <p>
+                Bajo las montañas y entre los bosques encontrarás
+                experiencias que no existen en ningún otro planeta.
+            </p>
+
+        </div>
+
+        <div class="cards">
+
+            <article class="activity-card reveal">
+                <div class="activity-icon">🎭</div>
+
+                <h3>
+                    Zona de ocio
+                </h3>
+
+                <p>
+                    Parques subterráneos, teatros holográficos,
+                    realidad virtual, espectáculos de luces y
+                    criaturas fantásticas.
+                </p>
+            </article>
+
+            <article class="activity-card reveal">
+                <div class="activity-icon">💎</div>
+
+                <h3>
+                    Cuevas de cristal
+                </h3>
+
+                <p>
+                    Explora enormes cuevas iluminadas por cristales
+                    naturales que brillan en la oscuridad.
+                </p>
+            </article>
+
+            <article class="activity-card reveal">
+                <div class="activity-icon">🏮</div>
+
+                <h3>
+                    Mercadillos
+                </h3>
+
+                <p>
+                    Música en directo, comida típica, artesanos,
+                    juegos tradicionales y productos únicos.
+                </p>
+            </article>
+
+            <article class="activity-card reveal">
+                <div class="activity-icon">🌲</div>
+
+                <h3>
+                    Bosques misteriosos
+                </h3>
+
+                <p>
+                    Descubre las plantas, paisajes y secretos que
+                    rodean la gran ciudad de Apalache.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ZOO
+    ========================== -->
+
+    <section class="zoo" id="zoo">
+
+        <div class="section-header reveal">
+
+            <div class="eyebrow">
+                Fauna de Apalache
+            </div>
+
+            <h2>
+                El zoo de criaturas
+            </h2>
+
+            <p>
+                Algunas criaturas parecen imposibles.
+                En Apalache, simplemente forman parte del paisaje.
+            </p>
+
+        </div>
+
+        <div class="creatures">
+
+            <article class="creature reveal">
+
+                <span class="creature-number">
+                    ESPECIE 01
+                </span>
+
+                <div class="creature-symbol">
+                    🦬
+                </div>
+
+                <h3>
+                    Chimera-Oscura
+                </h3>
+
+                <p>
+                    Un bisonte gigantesco e hipermusculado,
+                    con pelaje oscuro, garras enormes y una
+                    larga cola felina.
+                </p>
+
+                <div class="danger">
+                    ★★★★ Peligro alto
+                </div>
+
+            </article>
+
+
+            <article class="creature reveal">
+
+                <span class="creature-number">
+                    ESPECIE 02
+                </span>
+
+                <div class="creature-symbol">
+                    🦫
+                </div>
+
+                <h3>
+                    Chimpaquín-Gigante
+                </h3>
+
+                <p>
+                    Un animal regordete y cubierto de pelo marrón,
+                    parecido a un capibara gigante mezclado con
+                    una chinchilla.
+                </p>
+
+                <div class="danger">
+                    ★★☆☆ Peligro moderado
+                </div>
+
+            </article>
+
+
+            <article class="creature reveal">
+
+                <span class="creature-number">
+                    ESPECIE 03
+                </span>
+
+                <div class="creature-symbol">
+                    🦇
+                </div>
+
+                <h3>
+                    Chispa-Sombría
+                </h3>
+
+                <p>
+                    Una criatura felina negra y elegante con alas
+                    de murciélago y unas patas extremadamente
+                    delgadas.
+                </p>
+
+                <div class="danger">
+                    ★★★☆ Peligro medio
+                </div>
+
+            </article>
+
+
+            <article class="creature reveal">
+
+                <span class="creature-number">
+                    ESPECIE 04
+                </span>
+
+                <div class="creature-symbol">
+                    ❄️
+                </div>
+
+                <h3>
+                    Chiquitín-Escarcha
+                </h3>
+
+                <p>
+                    Un enorme topo de pelo azul claro y blanco
+                    que vive en recintos completamente helados.
+                </p>
+
+                <div class="danger">
+                    ★☆☆☆ Peligro bajo
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         LLHA'MERAI
+    ========================== -->
+
+    <section class="festival" id="llhamerai">
+
+        <div id="festivalDrops"></div>
+
+        <div class="festival-content">
+
+            <div class="eyebrow">
+                Una noche al año
+            </div>
+
+            <h2>
+                Llha'merai
+                <br>
+                <span>La noche de las lágrimas</span>
+            </h2>
+
+            <p class="festival-intro">
+
+                Una vez al año, la estatua deja de llorar sangre durante
+                toda una noche. Es la única ocasión en la que los habitantes
+                pueden salir al exterior después de oscurecer.
+
+                La celebración comienza al atardecer y las calles se llenan
+                de música, luces, comida y máscaras.
+
+            </p>
+
+            <div class="festival-grid">
+
+                <div class="festival-item">
+                    <strong>🍷 La Lágrima</strong>
+                    <span>
+                        Bebida roja tradicional que representa las lágrimas
+                        de la estatua.
+                    </span>
+                </div>
+
+                <div class="festival-item">
+                    <strong>🎭 Disfraces</strong>
+                    <span>
+                        Máscaras y disfraces inspirados en espíritus
+                        y criaturas de Apalache.
+                    </span>
+                </div>
+
+                <div class="festival-item">
+                    <strong>🌿 Búsqueda Nocturna</strong>
+                    <span>
+                        Los Recolectores Nocturnos buscan plantas que
+                        solo aparecen esa noche.
+                    </span>
+                </div>
+
+                <div class="festival-item">
+                    <strong>✨ Camino de las Luces</strong>
+                    <span>
+                        Un recorrido iluminado que atraviesa el bosque.
+                    </span>
+                </div>
+
+                <div class="festival-item">
+                    <strong>💎 Caza de Cristales</strong>
+                    <span>
+                        Los más pequeños buscan cristales luminosos
+                        escondidos por la ciudad.
+                    </span>
+                </div>
+
+                <div class="festival-item">
+                    <strong>🌅 El amanecer</strong>
+                    <span>
+                        Cuando aparece el primer rayo de sol,
+                        la estatua vuelve a llorar sangre.
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         GASTRONOMÍA
+    ========================== -->
+
+    <section class="food" id="gastronomia">
+
+        <div class="section-header reveal">
+
+            <div class="eyebrow">
+                Sabores de otro mundo
+            </div>
+
+            <h2>
+                ¿Dónde ir a comer?
+            </h2>
+
+            <p>
+                La gastronomía de Apalache es tan extraña como su historia.
+            </p>
+
+        </div>
+
+        <div class="restaurants">
+
+            <article class="restaurant reveal">
+
+                <div class="restaurant-icon">
+                    🍲
+                </div>
+
+                <h3>
+                    La Olla Apalachi
+                </h3>
+
+                <p>
+                    Un restaurante antiguo y tradicional donde
+                    descubrir recetas que han pasado de generación
+                    en generación.
+                </p>
+
+                <div class="dish">
+                    ESPECIALIDAD: Último Guisim
+                </div>
+
+            </article>
+
+
+            <article class="restaurant reveal">
+
+                <div class="restaurant-icon">
+                    🍔
+                </div>
+
+                <h3>
+                    Chi Express
+                </h3>
+
+                <p>
+                    Una de las paradas favoritas de los viajeros
+                    que quieren probar comida rápida de Apalache.
+                </p>
+
+                <div class="dish">
+                    ESPECIALIDAD: Hamburguesa de Chi
+                </div>
+
+            </article>
+
+
+            <article class="restaurant reveal">
+
+                <div class="restaurant-icon">
+                    ☕
+                </div>
+
+                <h3>
+                    La Casa de Vapor
+                </h3>
+
+                <p>
+                    Un lugar tranquilo donde probar infusiones
+                    preparadas con plantas propias del planeta.
+                </p>
+
+                <div class="dish">
+                    ESPECIALIDAD: Té de niebla y miedos
+                </div>
+
+            </article>
+
+
+            <article class="restaurant reveal">
+
+                <div class="restaurant-icon">
+                    🏮
+                </div>
+
+                <h3>
+                    Mercado de la Niebla
+                </h3>
+
+                <p>
+                    Productos gastronómicos, objetos culturales,
+                    amuletos y recuerdos de todo tipo.
+                </p>
+
+                <div class="dish">
+                    ESPECIALIDAD: Pan de lava
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MERCADO
+    ========================== -->
+
+    <section class="market">
+
+        <div class="market-content">
+
+            <div class="market-text reveal">
+
+                <div class="eyebrow">
+                    Mercado de la Niebla
+                </div>
+
+                <h2>
+                    Llévate un pedazo de Apalache.
+                </h2>
+
+                <p>
+                    Los mercadillos de Apalache están llenos de objetos
+                    extraños, alimentos imposibles y recuerdos que no
+                    encontrarás en ningún otro lugar de la galaxia.
+                </p>
+
+            </div>
+
+            <div class="market-list reveal">
+
+                <div class="market-item">
+                    <strong>🎭 Máscaras espirituales</strong>
+                    <span>Objetos culturales tradicionales.</span>
+                </div>
+
+                <div class="market-item">
+                    <strong>🧿 Amuletos</strong>
+                    <span>Protección tradicional contra los espíritus.</span>
+                </div>
+
+                <div class="market-item">
+                    <strong>🧂 Sal protectora</strong>
+                    <span>Uno de los productos más conocidos.</span>
+                </div>
+
+                <div class="market-item">
+                    <strong>🔇 Atrapa silencios</strong>
+                    <span>Un objeto capaz de atrapar sonidos.</span>
+                </div>
+
+                <div class="market-item">
+                    <strong>🍇 Frutos Tiki</strong>
+                    <span>Frutas que no existen en la Tierra.</span>
+                </div>
+
+                <div class="market-item">
+                    <strong>🍫 Chocolate del suspiro</strong>
+                    <span>Provoca un suspiro involuntario.</span>
+                </div>
+
+                <div class="market-item">
+                    <strong>🌶️ Especias</strong>
+                    <span>Sabores propios de Apalache.</span>
+                </div>
+
+                <div class="market-item">
+                    <strong>🌋 Pan de lava</strong>
+                    <span>Uno de los productos más famosos.</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         RESERVA
+    ========================== -->
+
+    <section class="booking">
+
+        <div class="booking-box reveal">
+
+            <h2>
+                ¿Te atreves?
+            </h2>
+
+            <p>
+                Solicita información sobre tu próxima expedición
+                al Planeta Apalache.
+            </p>
+
+            <form id="bookingForm">
+
+                <div class="field">
+                    <label for="name">
+                        Nombre
+                    </label>
+
+                    <input
+                        id="name"
+                        type="text"
+                        placeholder="Tu nombre"
+                        required
+                    >
+                </div>
+
+
+                <div class="field">
+                    <label for="travelers">
+                        Viajeros
+                    </label>
+
+                    <select id="travelers">
+
+                        <option>1 viajero</option>
+                        <option>2 viajeros</option>
+                        <option>3 viajeros</option>
+                        <option>4 viajeros</option>
+                        <option>5+ viajeros</option>
+
+                    </select>
+                </div>
+
+
+                <div class="field">
+                    <label for="date">
+                        Fecha aproximada
+                    </label>
+
+                    <input
+                        id="date"
+                        type="date"
+                    >
+                </div>
+
+
+                <div class="field">
+                    <label for="experience">
+                        Experiencia
+                    </label>
+
+                    <select id="experience">
+
+                        <option>Exploración de Apalache</option>
+                        <option>Zona de ocio</option>
+                        <option>Zoo de criaturas</option>
+                        <option>Llha'merai</option>
+                        <option>Experiencia gastronómica</option>
+
+                    </select>
+                </div>
+
+
+                <div class="field full">
+
+                    <label for="message">
+                        Cuéntanos qué buscas
+                    </label>
+
+                    <textarea
+                        id="message"
+                        placeholder="¿Qué quieres descubrir en Apalache?"
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Solicitar expedición →
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div class="footer-brand">
+
+                <h3>
+                    TRIPS <span class="orange">FOR</span> THE BRAVE
+                </h3>
+
+                <p>
+                    Viajes para quienes creen que el universo es
+                    demasiado grande como para quedarse en casa.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <a href="#inicio">Inicio</a>
+                <a href="#planeta">Apalache</a>
+                <a href="#experiencias">Experiencias</a>
+                <a href="#gastronomia">Gastronomía</a>
+
+            </div>
+
+        </div>
+
+        <div class="copyright">
+
+            © 2026 Trips for the Brave · Proyecto ficticio ·
+            Planeta Apalache
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        /* =========================
+           MENÚ MÓVIL
+        ========================== */
+
+        const menuButton = document.querySelector(".menu-btn");
+        const navLinks = document.querySelector(".nav-links");
+
+        menuButton.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("active");
+            });
+        });
+
+
+        /* =========================
+           ANIMACIONES AL HACER SCROLL
+        ========================== */
+
+        const observer = new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+        document.querySelectorAll(".reveal").forEach(element => {
+            observer.observe(element);
+        });
+
+
+        /* =========================
+           GOTAS DE SANGRE
+        ========================== */
+
+        const dropsContainer =
+            document.getElementById("festivalDrops");
+
+        function createDrop() {
+
+            const drop = document.createElement("div");
+
+            drop.className = "blood-drop";
+
+            drop.style.left =
+                Math.random() * 100 + "%";
+
+            drop.style.animationDuration =
+                (3 + Math.random() * 5) + "s";
+
+            drop.style.animationDelay =
+                Math.random() * 5 + "s";
+
+            dropsContainer.appendChild(drop);
+
+            setTimeout(() => {
+                drop.remove();
+            }, 9000);
+        }
+
+        for (let i = 0; i < 20; i++) {
+            createDrop();
+        }
+
+        setInterval(createDrop, 700);
+
+
+        /* =========================
+           FORMULARIO
+        ========================== */
+
+        const form = document.getElementById("bookingForm");
+
+        form.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            const name =
+                document.getElementById("name").value;
+
+            alert(
+                `¡Solicitud recibida, ${name}!\n\n` +
+                `Tu expedición a Planeta Apalache ha sido registrada.\n\n` +
+                `Trips for the Brave se pondrá en contacto contigo.`
+            );
+
+            form.reset();
+
+        });
+
+
+        /* =========================
+           FECHA MÍNIMA
+        ========================== */
+
+        const dateInput =
+            document.getElementById("date");
+
+        const today =
+            new Date().toISOString().split("T")[0];
+
+        dateInput.min = today;
+
+    </script>
+
+</body>
+</html>
